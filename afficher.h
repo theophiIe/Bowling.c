@@ -6,6 +6,9 @@
 //Fonction à appeler au début pour créer la fenetre graphique
 void initialisation_fenetre_graphique();
 
+//Le jeu vu du haut avec les score et le meilleur score
+void jeu_vu_de_haut();
+
 //Fonction à appeler à la fin pour terminer proprement la fenetre graphique
 void terminer_fenetre_graphique();
 

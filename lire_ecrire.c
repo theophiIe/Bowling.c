@@ -3,10 +3,10 @@
 #include <string.h>
 #include "gestion_bowling.h"
 
-BOWLING lire_fichier (char *nom){
-  BOWLING B;
-  return B;
+JEU lire_fichier (char *nom){
+	JEU J;
+	return J;
 }
 
-void ecrire_fichier(BOWLING B) {
+void ecrire_fichier(JEU J) {
 }

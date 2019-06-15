@@ -3,10 +3,9 @@
 #ifndef __BOWLING_H
 #define __BOWLING_H
 
-struct bowling {
-  int score;
+struct jeu {
+	int score;
 };
-
-typedef struct bowling BOWLING;
+typedef struct jeu JEU;
 
 #endif

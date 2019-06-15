@@ -29,14 +29,14 @@ void jouer() {
 }
 
 int main(int argc, char const *argv[]) {
-	BOWLING B;
-	B = lire_fichier(argv[1]);
+	JEU J;
+	J = lire_fichier(argv[1]);
 	initialisation_fenetre_graphique();
-	bowling_afficher(B);
+	bowling_afficher(J);
 	
 	while(1){
 		jouer();
-		bowling_afficher(B);
+		bowling_afficher(J);
 	}
 	terminer_fenetre_graphique();
 	exit(0);

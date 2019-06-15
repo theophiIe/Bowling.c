@@ -3,8 +3,8 @@
 
 #define LARGEUR 800
 #define HAUTEUR 600
-#define COUL_FOND burlywood
+#define COUL_PISTE burlywood
 #define COUL_GOUTTIERE lightslategray
-#define COUL_PISTE navajowhite
+#define COUL_FOND navajowhite
 
 #endif

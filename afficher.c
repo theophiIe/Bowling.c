@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <uvsqgraphics.h>
 #include "constantes.h"
+#include "afficher.h"
 #include "gestion_bowling.h"
 
 //initialisation de la fenetre graphique
@@ -91,16 +92,23 @@ void fond_piste(){
 
 void quille(int a, int b){
 	POINT p1,p2;
-	
+
+	//Partie inférieur de la quille//
 	p1.x = a;	p1.y = HAUTEUR - b + 30;
 	p2.x = a;	p2.y = HAUTEUR - b - 30;
 	draw_fill_ellipse(p1,p2,9,black);
 	draw_fill_ellipse(p1,p2,8,white);
 
+	//Partie supérieur de la quille//
 	p1.y +=30;
 	p2.y +=50;
 	draw_fill_ellipse(p1,p2,4,black);
 	draw_fill_ellipse(p1,p2,3,white);
+
+	//Trait rouge de la quille//
+	p1.x = a+5;		p1.y = p2.y;
+	p2.x = a-5;
+	draw_line(p1,p2,red);
 }
 
 void premier_rang_quille(){
@@ -170,12 +178,36 @@ void affichage_quille(){
 	premier_rang_quille();
 }
 
+BOULE la_boule(BOULE B){
+	B.rayon = 20;
+	B.dx = LARGEUR/2;	B.dy = B.rayon;
+	B.centre.x = B.dx;	B.centre.y = B.dy;
+	B.coul = red;
+	return B;
+}
+
+void affiche_boule(BOULE B){
+	draw_fill_circle(B.centre,B.rayon,B.coul);
+}
+
+void efface_boule(BOULE B){
+	draw_fill_circle(B.centre,B.rayon,COUL_PISTE);
+}
+
+void deplacement_boule(BOULE B){
+	while(B.dy - B.rayon != 2*HAUTEUR/3){
+		efface_boule(B);
+		B.dy++;
+		affiche_boule(B);
+	}
+}
+
 void terminer_fenetre_graphique(){
 	wait_escape();
 }
 
 //affichage de totues les fonctions d'affichage
-void bowling_afficher(JEU J) {
+void bowling_afficher(BOULE B) {
 	fill_screen(COUL_FOND);
 	piste();
 	piste_decors();
@@ -184,5 +216,6 @@ void bowling_afficher(JEU J) {
 	fond();
 	fond_piste();
 	affichage_quille();
+	affiche_boule(B);
 	affiche_all();
 }

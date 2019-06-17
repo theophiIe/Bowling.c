@@ -85,13 +85,89 @@ void fond_piste(){
 	draw_fill_rectangle(p1,p2,black);
 
 	p1.x = 5*LARGEUR/6;		p1.y = HAUTEUR/2;
-	p2.x = LARGEUR;		p2.y = HAUTEUR - HAUTEUR/4;
+	p2.x = LARGEUR;			p2.y = HAUTEUR - HAUTEUR/4;
 	draw_fill_rectangle(p1,p2,black);
 }
 
-void quille(){
+void quille(int a, int b){
+	POINT p1,p2;
 	
+	p1.x = a;	p1.y = HAUTEUR - b + 30;
+	p2.x = a;	p2.y = HAUTEUR - b - 30;
+	draw_fill_ellipse(p1,p2,9,black);
+	draw_fill_ellipse(p1,p2,8,white);
 
+	p1.y +=30;
+	p2.y +=50;
+	draw_fill_ellipse(p1,p2,4,black);
+	draw_fill_ellipse(p1,p2,3,white);
+}
+
+void premier_rang_quille(){
+	int a,b;
+
+	//Quille centre//
+	a = LARGEUR/2;
+	b = 2*HAUTEUR/3;
+	quille(a,b);
+}
+
+void deuxieme_rang_quille(){
+	int a,b;
+
+	//Quille droite//
+	a = LARGEUR/2 + 35; 
+	b = 3*HAUTEUR/5;
+	quille(a,b);
+
+	//Quille gauche//
+	a -= 70;
+	quille(a,b);
+}
+
+void troisieme_rang_quille(){
+	int a,b;
+
+	//Quille centre//
+	a = LARGEUR/2;
+	b = 3*HAUTEUR/5 - 30;
+	quille(a,b);
+
+	//Quille gauche//
+	a -= 70;
+	quille(a,b);
+
+	//Quille droite//
+	a += 140;
+	quille(a,b);
+}
+
+void quatrieme_rang_quille(){
+	int a,b;
+
+	//Quille droite//
+	a = LARGEUR/2 + 35;
+	b = 3*HAUTEUR/5 - 60;
+	quille(a,b);
+
+	//Quille très à droite//
+	a += 70;
+	quille(a,b);
+
+	//Quille gauche//
+	a = LARGEUR/2 - 35;
+	quille(a,b);
+
+	//Quille très à gauche//
+	a -= 70;
+	quille(a,b);
+}
+
+void affichage_quille(){
+	quatrieme_rang_quille();
+	troisieme_rang_quille();
+	deuxieme_rang_quille();
+	premier_rang_quille();
 }
 
 void terminer_fenetre_graphique(){
@@ -107,5 +183,6 @@ void bowling_afficher(JEU J) {
 	gouttiere_decors();
 	fond();
 	fond_piste();
+	affichage_quille();
 	affiche_all();
 }

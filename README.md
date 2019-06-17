@@ -19,4 +19,4 @@ Projet en cours
   - Fichier qui contient les macros des differents fichier 
   
  ## Bowling.c :
-    - Fichier qui contient le main
+  - Fichier qui contient le main
